@@ -28,6 +28,11 @@ public class UserController {
         return userService.login(user.getEmail(), user.getPassword());
     }
 
+    @PostMapping("/admin-login")
+    public User adminLogin(@RequestBody User user) {
+        return userService.adminLogin(user.getEmail(), user.getPassword());
+    }
+
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);

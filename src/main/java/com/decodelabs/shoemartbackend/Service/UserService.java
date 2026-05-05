@@ -27,6 +27,14 @@ public class UserService {
         return null;
     }
 
+    public User adminLogin(String email, String password) {
+        User user = userRepository.findByEmail(email);
+        if (user != null && user.getPassword().equals(password) && "ADMIN".equals(user.getRole())) {
+            return user;
+        }
+        return null;
+    }
+
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
