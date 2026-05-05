@@ -1,6 +1,6 @@
 package com.decodelabs.shoemartbackend.model.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,5 +18,5 @@ public class User {
     private String username;
     private String email;
     private String password;
-    private String role; // ADMIN, CUSTOMER
+    private String role;
 }

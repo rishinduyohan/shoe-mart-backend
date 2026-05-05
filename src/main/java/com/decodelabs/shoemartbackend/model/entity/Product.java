@@ -1,6 +1,6 @@
 package com.decodelabs.shoemartbackend.model.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,6 @@ public class Product {
 
     private String name;
     private String category;
-    private Double price;
     private Double oldPrice;
     private Integer discount;
     private Integer rating;
