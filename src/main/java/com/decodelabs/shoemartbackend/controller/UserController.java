@@ -1,36 +1,48 @@
 package com.decodelabs.shoemartbackend.controller;
 
 import com.decodelabs.shoemartbackend.Service.UserService;
-import com.decodelabs.shoemartbackend.model.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.decodelabs.shoemartbackend.model.dto.LoginRequestDTO;
+import com.decodelabs.shoemartbackend.model.dto.UserDTO;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class UserController {
-    @Autowired
-    private UserService userService;
+
+    private final UserService userService;
 
     @GetMapping
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @PostMapping
-    public User addUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public UserDTO addUser(@RequestBody UserDTO userDTO) {
+        return userService.saveUser(userDTO);
     }
 
     @PostMapping("/login")
-    public User login(@RequestBody User user) {
-        return userService.login(user.getEmail(), user.getPassword());
+    public ResponseEntity<UserDTO> login(@RequestBody LoginRequestDTO loginRequestDTO) {
+        UserDTO userDTO = userService.login(loginRequestDTO);
+        if (userDTO != null) {
+            return ResponseEntity.ok(userDTO);
+        }
+        return ResponseEntity.status(401).build();
     }
 
     @PostMapping("/admin-login")
-    public User adminLogin(@RequestBody User user) {
-        return userService.adminLogin(user.getEmail(), user.getPassword());
+    public ResponseEntity<UserDTO> adminLogin(@RequestBody LoginRequestDTO loginRequestDTO) {
+        UserDTO userDTO = userService.adminLogin(loginRequestDTO);
+        if (userDTO != null) {
+            return ResponseEntity.ok(userDTO);
+        }
+        return ResponseEntity.status(401).build();
     }
 
     @DeleteMapping("/{id}")
