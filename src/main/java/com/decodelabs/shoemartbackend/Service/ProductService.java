@@ -1,25 +1,13 @@
 package com.decodelabs.shoemartbackend.Service;
 
-import com.decodelabs.shoemartbackend.Repository.ProductRepository;
-import com.decodelabs.shoemartbackend.model.entity.Product;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.decodelabs.shoemartbackend.model.dto.ProductDTO;
+
 import java.util.List;
 
-@Service
-public class ProductService {
-    @Autowired
-    private ProductRepository productRepository;
-
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
-    }
-
-    public Product saveProduct(Product product) {
-        return productRepository.save(product);
-    }
-
-    public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
-    }
+public interface ProductService {
+    List<ProductDTO> getAllProducts();
+    ProductDTO saveProduct(ProductDTO productDTO);
+    boolean deleteProduct(Long id);
+    ProductDTO getProductById(Long id);
+    ProductDTO updateProduct(Long id, ProductDTO productDTO);
 }
