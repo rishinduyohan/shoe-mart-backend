@@ -1,5 +1,6 @@
 package com.decodelabs.shoemartbackend.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,8 @@ public class ProductDTO {
     private Integer discount;
     private Integer rating;
     private String image;
+
+    @JsonProperty("priceValue")
     private Double priceValue;
 }
 

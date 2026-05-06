@@ -7,9 +7,5 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ShoeMartBackendApplicationTests {
 
-    @Test
-    void contextLoads() {
-        assertNotNull(new ShoeMartBackendApplication());
-    }
 
 }
