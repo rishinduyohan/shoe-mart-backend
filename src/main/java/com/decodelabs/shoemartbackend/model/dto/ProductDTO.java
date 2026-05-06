@@ -20,4 +20,3 @@ public class ProductDTO {
     @JsonProperty("priceValue")
     private Double priceValue;
 }
-
